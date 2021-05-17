@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDirs": [
+      "src"
+    ]
+  },
+  "include": [
+    "src"
+  ]
+}

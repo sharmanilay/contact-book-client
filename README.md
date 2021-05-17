@@ -3,8 +3,15 @@
 ## About
 
 Contact book is an all in one app to write notes and manage contacts using google contacts.
-[Live Link](https://contact-book-client.netlify.app/)
-[Demo Video](https://drive.google.com/file/d/1RxjWfXcKGUeN1kRJMaH59Xp_CDfaZlJN/view?usp=sharing)
+- [Live Link](https://contact-book-client.netlify.app/)
+- [Demo Video](https://drive.google.com/file/d/1RxjWfXcKGUeN1kRJMaH59Xp_CDfaZlJN/view?usp=sharing)
+
+## Features
+
+- [x] Fetch google contacts
+- [x] Perform actions on contacts (email, phone call)
+- [x] Add/Delete multiple comments for a particular contact
+- [x] Other details include phone numbers, names, organizations and addresses
 
 ## Setup
 

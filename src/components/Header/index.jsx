@@ -7,7 +7,6 @@ import Button from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu'
 import { AppContext } from 'src/context/AppContext'
 import { useContext } from 'react'
-import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAuthStatus } from 'src/store/actions/user'
 
@@ -58,7 +57,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
 	const classes = useStyles()
-	const history = useHistory()
 	const user = useSelector((state) => state.user)
 	const dispatch = useDispatch()
 	// const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

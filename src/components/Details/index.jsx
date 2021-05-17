@@ -81,14 +81,12 @@ const Details = () => {
 		return (
 			<div className={classes.otherInfo}>
 				<Typography variant='h6'>Other Names</Typography>
-				{names.map((name, i) => {
-					if (i > 0) {
-						return (
-							<Typography key={name.unstructuredName}>
-								{name.displayName}
-							</Typography>
-						)
-					}
+				{names.map((name) => {
+					return (
+						<Typography key={name.unstructuredName}>
+							{name.displayName}
+						</Typography>
+					)
 				})}
 			</div>
 		)
@@ -97,10 +95,8 @@ const Details = () => {
 		return (
 			<div className={classes.otherInfo}>
 				<Typography variant='h6'>Other Emails</Typography>
-				{emailAddresses.map((email, i) => {
-					if (i > 0) {
-						return <Typography key={email.value}>{email.value}</Typography>
-					}
+				{emailAddresses.map((email) => {
+					return <Typography key={email.value}>{email.value}</Typography>
 				})}
 			</div>
 		)
@@ -133,10 +129,8 @@ const Details = () => {
 		return (
 			<div className={classes.otherInfo}>
 				<Typography variant='h6'>Other phone numbers</Typography>
-				{phoneNumbers.map((phone, i) => {
-					if (i > 0) {
-						return <Typography key={phone.value}>{phone.value}</Typography>
-					}
+				{phoneNumbers.map((phone) => {
+					return <Typography key={phone.value}>{phone.value}</Typography>
 				})}
 			</div>
 		)
@@ -149,7 +143,6 @@ const Details = () => {
 			return <h1>Something went wrong...</h1>
 		} else if (response && response.resourceName) {
 			const {
-				resourceName,
 				names,
 				photos,
 				emailAddresses,
@@ -231,13 +224,13 @@ const Details = () => {
 							<Comments />
 						</Grid>
 						<Grid item xs={12}>
-							{names && names.length > 1 && showNames(names)}
+							{names && names.length > 1 && showNames(names.slice(1))}
 							{emailAddresses &&
 								emailAddresses.length > 1 &&
-								showEmailAddresses(emailAddresses)}
+								showEmailAddresses(emailAddresses.slice(1))}
 							{phoneNumbers &&
 								phoneNumbers.length > 1 &&
-								showPhoneNumbers(phoneNumbers)}
+								showPhoneNumbers(phoneNumbers.slice(1))}
 							{organizations &&
 								organizations.length > 0 &&
 								showOrganizations(organizations)}

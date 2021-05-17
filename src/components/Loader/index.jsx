@@ -38,7 +38,7 @@ const Loader = ({ type, qty = 3 }) => {
 						return (
 							<Paper className={classes.paper} key={i}>
 								<Skeleton height={30} width={210} animation='wave' />
-								<Skeleton height={20} width={410} animation='wave' />
+								<Skeleton height={20} width={210} animation='wave' />
 								<Skeleton
 									height={20}
 									className={classes.skeletonItem}

@@ -1,11 +1,11 @@
 import { GoogleLogin } from 'react-google-login'
-import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
 import { useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { setAuthStatus } from 'src/store/actions/user'
-import Typography from '@material-ui/core/Typography'
 import { useState, useEffect } from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Typography from '@material-ui/core/Typography'
 import LoginBg from '../../assets/images/login-bg.png'
 import http from 'src/components/utils/http'
 
@@ -24,11 +24,6 @@ const useStyles = makeStyles((theme) => ({
 	loginImage: {
 		maxHeight: '700px',
 		width: '100%'
-	},
-	paper: {
-		display: 'flex',
-		padding: 10,
-		marginBottom: 20
 	}
 }))
 
@@ -54,17 +49,19 @@ const Login = () => {
 			clearInterval(id)
 		}
 	}, [])
-	const handleLogin = (data) => {
-		http
-			.post('/signin', {
+
+	const handleLogin = async (data) => {
+		try {
+			const res = await http.post('/signin', {
 				accessToken: data.accessToken,
 				profile: data.profileObj
 			})
-			.then((res) => {
-				dispatch(setAuthStatus(Boolean(res.data.token)))
-				localStorage.setItem('default_auth_token', res.data.token)
-				history.push('/home')
-			})
+			dispatch(setAuthStatus(Boolean(res.data.token)))
+			localStorage.setItem('default_auth_token', res.data.token)
+			history.push('/home')
+		} catch (err) {
+			console.error(err)
+		}
 	}
 	return (
 		<Grid className={classes.root} container justify='flex-start'>

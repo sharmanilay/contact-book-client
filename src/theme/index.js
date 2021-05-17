@@ -52,17 +52,6 @@ const theme = createMuiTheme({
 				background: 'transparent'
 			}
 		},
-		MuiTable: {
-			root: {
-				border: '1px solid #EAEAEA',
-				boxShadow: '0px'
-			}
-		},
-		MuiTableCell: {
-			root: {
-				borderRight: '1px solid #EAEAEA'
-			}
-		},
 		MuiTypography: {
 			h4: {
 				[breakpoints.down('xs')]: {

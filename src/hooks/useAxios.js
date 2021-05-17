@@ -19,11 +19,9 @@ const useAxios = (url, options) => {
 			try {
 				const res = await http.request(url, options)
 				if (mounted) {
-					console.log(res.data)
 					setResponse(res.data)
 				}
 			} catch (error) {
-				console.log(error)
 				if (error.response && error.response.status === 401) {
 					localStorage.removeItem('default_auth_token')
 					dispatch(setAuthStatus(false))

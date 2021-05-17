@@ -1,19 +1,16 @@
-import { makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import { Link } from 'react-router-dom'
-import Button from '@material-ui/core/Button'
-import MenuIcon from '@material-ui/icons/Menu'
 import { AppContext } from 'src/context/AppContext'
 import { useContext } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { setAuthStatus } from 'src/store/actions/user'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
+import MenuIcon from '@material-ui/icons/Menu'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
-		flexGrow: 1
-	},
 	appBar: {
 		display: 'flex',
 		background: theme.palette.primary.main
@@ -38,16 +35,6 @@ const useStyles = makeStyles((theme) => ({
 		verticalAlign: 'middle',
 		height: 40
 	},
-	link: {
-		color: theme.palette.primary.main,
-		textDecoration: 'none',
-		padding: '5px 20px'
-	},
-	dropButton: {
-		display: 'flex',
-		alignItems: 'center',
-		color: theme.palette.primary.main
-	},
 	mobileRightMenu: {
 		[theme.breakpoints.up('sm')]: {
 			display: 'none'
@@ -57,9 +44,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar = () => {
 	const classes = useStyles()
-	const user = useSelector((state) => state.user)
 	const dispatch = useDispatch()
-	// const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+	const user = useSelector((state) => state.user)
 	const sideNavbarContext = useContext(AppContext)
 
 	const handleOpenSidebar = () => {
@@ -73,7 +59,7 @@ const Navbar = () => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div>
 			<AppBar className={classes.appBar} position='static'>
 				<Toolbar className={classes.toolbar}>
 					<div className={classes.brand}>

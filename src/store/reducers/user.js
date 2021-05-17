@@ -10,11 +10,6 @@ const userReducer = (state = initialState, action) => {
 				...state,
 				isAuthenticated: action.payload.isAuthenticated
 			}
-		case 'SET_USER_INFO':
-			return {
-				...state,
-				info: action.payload.info
-			}
 		default:
 			return state
 	}

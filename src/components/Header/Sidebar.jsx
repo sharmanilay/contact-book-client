@@ -1,12 +1,11 @@
-import React from 'react'
-import { AppContext } from 'src/context/AppContext'
 import { useContext } from 'react'
-import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
-import { makeStyles } from '@material-ui/core/styles'
-import { Button } from '@material-ui/core'
-import Close from '@material-ui/icons/Close'
 import { useDispatch } from 'react-redux'
 import { setAuthStatus } from 'src/store/actions/user'
+import { AppContext } from 'src/context/AppContext'
+import { makeStyles } from '@material-ui/core/styles'
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer'
+import Button from '@material-ui/core/Button'
+import Close from '@material-ui/icons/Close'
 
 const useStyles = makeStyles(() => ({
 	wrapper: {
@@ -21,20 +20,16 @@ const useStyles = makeStyles(() => ({
 		top: 80,
 		marginTop: 70
 	},
-	sideNavItem: {
-		fontSize: 20,
-		borderBottom: '1px solid #eaeaea',
-		padding: '15px 40px'
-	},
 	buttonWrapper: {
 		padding: '15px 40px'
 	}
 }))
+
 const SideNavbar = () => {
-	const sideNavbarContext = useContext(AppContext)
-	const { isSideNavbarOpen, setIsSideNavbarOpen } = sideNavbarContext
 	const classes = useStyles()
 	const dispatch = useDispatch()
+	const sideNavbarContext = useContext(AppContext)
+	const { isSideNavbarOpen, setIsSideNavbarOpen } = sideNavbarContext
 
 	const logoutUser = () => {
 		localStorage.removeItem('default_auth_token')

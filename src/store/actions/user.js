@@ -6,11 +6,3 @@ export const setAuthStatus = (isAuthenticated) => (dispatch) => {
 		}
 	})
 }
-export const setUserInfo = (info) => (dispatch) => {
-	return dispatch({
-		type: 'SET_USER_INFO',
-		payload: {
-			info
-		}
-	})
-}

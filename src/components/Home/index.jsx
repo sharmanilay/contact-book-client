@@ -1,17 +1,17 @@
-import useAxios from '../../hooks/useAxios'
-import Loader from '../Loader'
+import { Link as RouterLink } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
-import Avatar from '@material-ui/core/Avatar'
 import Typography from '@material-ui/core/Typography'
-import EmailRoundedIcon from '@material-ui/icons/EmailRounded'
+import Avatar from '@material-ui/core/Avatar'
 import Link from '@material-ui/core/Link'
-import { Link as RouterLink } from 'react-router-dom'
 import Tooltip from '@material-ui/core/Tooltip'
+import EmailRoundedIcon from '@material-ui/icons/EmailRounded'
 import PhoneInTalkIcon from '@material-ui/icons/PhoneInTalk'
 import RateReviewIcon from '@material-ui/icons/RateReview'
+import useAxios from '../../hooks/useAxios'
+import Loader from '../Loader'
 
 const useStyles = makeStyles((theme) => ({
 	gridRoot: {
@@ -122,7 +122,7 @@ const Home = () => {
 								<div className={classes.actionItems}>
 									<Tooltip
 										interactive
-										placement='top'
+										placement='bottom'
 										title={<Typography>Add/Edit note</Typography>}
 									>
 										<Link
@@ -137,7 +137,7 @@ const Home = () => {
 									{item.phone && (
 										<Tooltip
 											interactive
-											placement='top'
+											placement='bottom'
 											title={<Typography>Make a call</Typography>}
 										>
 											<Link
@@ -151,7 +151,7 @@ const Home = () => {
 									)}
 									<Tooltip
 										interactive
-										placement='top'
+										placement='bottom'
 										title={<Typography>Write an email</Typography>}
 									>
 										<Link

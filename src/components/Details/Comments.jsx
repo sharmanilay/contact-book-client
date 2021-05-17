@@ -1,17 +1,16 @@
+import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import http from 'src/components/utils/http'
 import TextField from '@material-ui/core/TextField'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import DeleteIcon from '@material-ui/icons/Delete'
+import http from 'src/components/utils/http'
 
 const useStyles = makeStyles((theme) => ({
-	root: {
+	wrapper: {
 		padding: 20
 	},
 	commentWrapper: {
@@ -36,8 +35,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 	commentSubmit: {
 		margin: 10
-	},
-	wrapper: {}
+	}
 }))
 
 const Comments = () => {
@@ -47,42 +45,48 @@ const Comments = () => {
 	const [editMode, setEditMode] = useState(false)
 	const [updated, setUpdated] = useState(false)
 	const [comments, setComments] = useState([])
-	// const { isLoading, response, error } = useAxios(
-	// 	`/get-comments?comment_for_user=${id}`,
-	// 	{
-	// 		method: 'GET'
-	// 	}
-	// )
 
 	useEffect(() => {
 		const getComments = async () => {
-			const resp = await http.get(`/get-comments?comment_for_user=${id}`)
-			setComments(resp.data)
-			setUpdated(false)
-			setInput('')
+			try {
+				const resp = await http.get(`/get-comments?comment_for_user=${id}`)
+				setComments(resp.data)
+				setUpdated(false)
+				setInput('')
+			} catch (err) {
+				console.error(err)
+			}
 		}
 		getComments()
 	}, [id, updated])
 
-	const deleteComment = async (id) => {
-		await http.post('/delete-comment', {
-			id
-		})
-		setUpdated(true)
-	}
-
-	const updateComments = async () => {
-		await http.post('/create-comment', {
-			id,
-			comment: input
-		})
-		setUpdated(true)
-		setEditMode(false)
-	}
-
 	const handleInputChange = (evt) => {
 		evt.preventDefault()
 		setInput(evt.target.value)
+	}
+
+	const deleteComment = async (id) => {
+		try {
+			await http.post('/delete-comment', {
+				id
+			})
+			setUpdated(true)
+		} catch (err) {
+			console.error(err)
+		}
+	}
+
+	const updateComments = async () => {
+		try {
+			await http.post('/create-comment', {
+				id,
+				comment: input
+			})
+			setUpdated(true)
+			setEditMode(false)
+		} catch (err) {
+			console.error(err)
+		}
 	}
 
 	const showExistingComments = () => {
@@ -111,10 +115,9 @@ const Comments = () => {
 	}
 
 	return (
-		<div className={classes.root}>
+		<div className={classes.wrapper}>
 			<Typography variant='h6'>Available Comments</Typography>
 			<div className={classes.wrapper}>{showExistingComments()}</div>
-			{/* <Button onClick={getComments}>get comments</Button> */}
 			<div>
 				{editMode ? (
 					<div className={classes.inputForm}>

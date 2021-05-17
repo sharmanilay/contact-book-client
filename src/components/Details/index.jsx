@@ -191,7 +191,7 @@ const Details = () => {
 										{phone && (
 											<Tooltip
 												interactive
-												placement='top'
+												placement='bottom'
 												title={<Typography>Make a call</Typography>}
 											>
 												<Link
@@ -205,7 +205,7 @@ const Details = () => {
 										)}
 										<Tooltip
 											interactive
-											placement='top'
+											placement='bottom'
 											title={<Typography>Write an email</Typography>}
 										>
 											<Link

@@ -28,7 +28,10 @@ const useStyles = makeStyles((theme) => ({
 	avatar: {
 		alignSelf: 'center',
 		width: theme.spacing(7),
-		height: theme.spacing(7)
+		height: theme.spacing(7),
+		[theme.breakpoints.down('xs')]: {
+			display: 'none'
+		}
 	},
 	userInfo: {
 		flexGrow: 1,
@@ -170,7 +173,7 @@ const Details = () => {
 					key={response.resourceName}
 				>
 					<Grid container>
-						<Grid item xs={12} sm={10} md={6}>
+						<Grid item xs={12} md={6}>
 							<div className={classes.profile}>
 								<Avatar className={classes.avatar} alt={name} src={picture} />
 								<div className={classes.userInfo}>
@@ -220,7 +223,7 @@ const Details = () => {
 								</div>
 							</div>
 						</Grid>
-						<Grid item xs={12} sm={10} md={6}>
+						<Grid item xs={12} md={6}>
 							<Comments />
 						</Grid>
 						<Grid item xs={12}>

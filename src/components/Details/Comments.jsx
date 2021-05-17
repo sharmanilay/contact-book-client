@@ -94,7 +94,7 @@ const Comments = () => {
 			return <Typography>No comments to show</Typography>
 		} else {
 			return (
-				<Grid item xs={12} md={8} lg={6} className={classes.commentWrapper}>
+				<Grid item xs={12} lg={6} className={classes.commentWrapper}>
 					{comments.map((item) => {
 						return (
 							<Paper key={item.id} className={classes.comment}>
@@ -117,7 +117,7 @@ const Comments = () => {
 	return (
 		<div className={classes.wrapper}>
 			<Typography variant='h6'>Available Comments</Typography>
-			<div className={classes.wrapper}>{showExistingComments()}</div>
+			{showExistingComments()}
 			<div>
 				{editMode ? (
 					<div className={classes.inputForm}>

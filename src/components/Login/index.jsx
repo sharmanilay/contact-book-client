@@ -31,7 +31,7 @@ const targets = ['Phone Book', 'Address Book', 'Mailing List']
 
 const Login = () => {
 	const classes = useStyles()
-	const history = useHistory(useHistory)
+	const history = useHistory()
 	const dispatch = useDispatch()
 	const [currentTarget, setCurrentTarget] = useState(0)
 
